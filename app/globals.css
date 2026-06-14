@@ -1,26 +1,64 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --font-sans: var(--font-dm-sans);
+  --font-mono: var(--font-dm-mono);
+
+  /* Apple dark mode palette */
+  --bg:           #000000;
+  --bg-elevated:  #1C1C1E;
+  --bg-card:      #2C2C2E;
+  --separator:    #38383A;
+  --fill:         #3A3A3C;
+
+  --label:        #FFFFFF;
+  --label-2:      #EBEBF5CC;
+  --label-3:      #EBEBF5B3;
+  --label-4:      #EBEBF573;
+
+  --green:   #2DD4BF;
+  --blue:    #0A84FF;
+  --red:     #FF375F;
+  --orange:  #FF9F0A;
+  --yellow:  #FFD60A;
+  --purple:  #BF5AF2;
+  --teal:    #64D2FF;
+  --indigo:  #5E5CE6;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+html { background: var(--bg); }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--label);
+  font-family: var(--font-dm-sans, 'DM Sans', -apple-system, sans-serif);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior: none;
+}
+
+/* Safe area for bottom nav */
+.page-content {
+  padding-bottom: 88px;
+  min-height: 100dvh;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--fill); border-radius: 2px; }
+
+/* Apple card style */
+.card {
+  background: var(--bg-elevated);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* Haptic feel on tap */
+button, a {
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
 }
